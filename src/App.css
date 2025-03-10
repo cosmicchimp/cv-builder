@@ -62,8 +62,12 @@
   letter-spacing: 0.05vw;
 }
 html {
-  background-color: rgb(255, 204, 255);
+  background-color: rgb(35, 141, 255);
   overflow-x: none;
+  background-image: radial-gradient(circle, black 1px, transparent 1px),
+    radial-gradient(circle, black 1px, transparent 1px);
+  background-size: 20px 20px; /* Adjust the size of the dots */
+  background-position: 0 0, 10px 10px;
 }
 .appWrapper {
   display: grid;
@@ -82,7 +86,7 @@ html {
   justify-content: flex-start;
   color: white;
   border-radius: 5px;
-  box-shadow: 4px 4px 10px grey;
+  box-shadow: 4px 4px 10px rgb(30, 28, 28);
   grid-column: 1/1;
   grid-row: 2/2;
   padding: 1vw;
@@ -101,11 +105,12 @@ html {
   flex-direction: column;
   font-size: 1.5rem;
   justify-content: center;
+  color: white;
 }
 .resumeWrapper {
   background-color: white;
   border-radius: 5px;
-  box-shadow: 8px 8px 10px grey;
+  box-shadow: 8px 8px 10px rgb(30, 28, 28);
   grid-column: 2/3;
   grid-row: 2/6;
   padding: 2vw;
