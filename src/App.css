@@ -17,6 +17,9 @@
   .collapseBox {
     justify-content: center !important;
   }
+  .collapseBox > h2 {
+    margin-left: 2vw;
+  }
   .workSection > input,
   .educationSection > input,
   .generalInfoSection > input {
@@ -46,6 +49,7 @@
   }
   .collapseButton {
     margin-left: auto !important;
+    margin-right: 2vw !important;
   }
 }
 #root {
