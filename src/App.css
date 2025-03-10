@@ -12,7 +12,7 @@
     display: flex !important;
     justify-content: none !important;
     align-items: center !important;
-    width: 50vw !important;
+    width: 70vw !important;
   }
   .collapseBox {
     justify-content: center !important;
@@ -41,7 +41,8 @@
     left: -2vw !important;
   }
   .resumeWrapper {
-    width: 90vw !important;
+    width: 86vw !important;
+    padding: 4vw !important;
   }
   .collapseButton {
     margin-left: auto !important;
@@ -103,7 +104,7 @@ html {
   box-shadow: 8px 8px 10px grey;
   grid-column: 2/3;
   grid-row: 2/6;
-  padding: 1vw;
+  padding: 2vw;
 }
 .contactInfo {
   gap: 0;
