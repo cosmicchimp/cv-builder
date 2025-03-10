@@ -43,6 +43,9 @@
   .resumeWrapper {
     width: 90vw !important;
   }
+  .collapseButton {
+    margin-left: auto !important;
+  }
 }
 #root {
   max-width: 1280px;
