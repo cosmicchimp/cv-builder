@@ -1,0 +1,10 @@
+#root {
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+.appWrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
