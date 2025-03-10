@@ -4,6 +4,7 @@ import { Header } from "./components/Header.jsx";
 import { ResumeOutput } from "./components/ResumeOutput.jsx";
 import { EducationSection } from "./components/EducationSection.jsx";
 import { WorkSection } from "./components/WorkSection.jsx";
+import { SkillsSection } from "./components/SkillsSection.jsx";
 import "./App.css";
 //function that will be used to take inputs and print them to the resume
 function App() {
@@ -34,9 +35,13 @@ function App() {
       endTime: "Current",
       taskDesc:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      skills: ["Frontend Development", "React Development"],
     },
   ]);
+  const [skillsOutput, updateSkillsOutput] = useState([
+    "Frontend Development",
+    "React Development",
+  ]);
+
   return (
     <>
       <div className="appWrapper">
@@ -47,11 +52,13 @@ function App() {
         />
         <EducationSection updateEducation={updateEducation} />
         <WorkSection updateWork={updateWork} />
+        <SkillsSection updateSkillsOutput={updateSkillsOutput} />
         <ResumeOutput
           className="resumeSection"
           resumeOutput={cvOutput}
           educationOutput={educationOutput}
           workOutput={workOutput}
+          skillsOutput={skillsOutput}
         />
       </div>
     </>
