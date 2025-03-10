@@ -10,7 +10,8 @@
   }
   .workSection,
   .educationSection,
-  .generalInfoSection {
+  .generalInfoSection,
+  .skillsSection {
     display: flex !important;
     justify-content: none !important;
     align-items: center !important;
@@ -24,7 +25,8 @@
   }
   .workSection > input,
   .educationSection > input,
-  .generalInfoSection > input {
+  .generalInfoSection > input,
+  .skillsSection > input {
     padding: 0.5vw !important;
     border-radius: 5px !important;
     width: 50vw !important;
@@ -79,13 +81,14 @@ html {
 }
 .generalInfoSection,
 .educationSection,
-.workSection {
-  gap: 0.5rem;
+.workSection,
+.skillsSection {
+  gap: 1rem;
   background-color: var(--secondaryColor);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   color: white;
   border-radius: 5px;
   box-shadow: 4px 4px 10px rgb(30, 28, 28);
@@ -93,11 +96,14 @@ html {
   grid-row: 2/2;
   padding: 1vw;
 }
+
 .generalInfoSection > input,
 .educationSection > input,
-.workSection > input {
+.workSection > input,
+.workSection > label > input,
+.skillsSection > label > input {
   padding: 0.5vw;
-  border-radius: 5px;
+  border-radius: 10px;
   width: 15vw;
 }
 .headerBox {
@@ -127,11 +133,15 @@ html {
 .educationSection {
   grid-row: 3/4;
 }
-.educationResumeSection {
+.educationResumeSection,
+.skillsResumeSection {
   margin-left: 0.5vw;
 }
 .descriptionSection > p {
   margin-left: 0.5vw;
+}
+.skillsSection {
+  grid-row: 5/5;
 }
 #personalDesc {
   height: 10vh;
@@ -180,7 +190,7 @@ textarea {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 .collapseButton:hover {
@@ -190,6 +200,8 @@ textarea {
 .collapseButton {
   height: clamp(1vw, 3vw, 8vw);
   transition: transform 0.5s ease-in-out;
+  margin-left: auto;
+  margin-right: 0.25vw;
 }
 
 .collapseButton.flipped {
