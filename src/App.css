@@ -4,13 +4,18 @@
   .appWrapper {
     display: flex !important;
     flex-direction: column !important;
+    align-items: center !important;
   }
   .workSection,
   .educationSection,
   .generalInfoSection {
     display: flex !important;
     justify-content: none !important;
-    align-items: none !important;
+    align-items: center !important;
+    width: 50vw !important;
+  }
+  .collapseBox {
+    justify-content: center !important;
   }
   .workSection > input,
   .educationSection > input,
@@ -34,6 +39,9 @@
   }
   .educationChunk::before {
     left: -2vw !important;
+  }
+  .resumeWrapper {
+    width: 90vw !important;
   }
 }
 #root {
@@ -120,6 +128,7 @@ textarea {
   height: 10vh;
   word-wrap: break-word;
   width: 16vw;
+  resize: vertical;
 }
 
 .workResumeSection {
