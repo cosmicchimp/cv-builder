@@ -1,65 +1,29 @@
 import { useState } from "react";
-
-export function WorkSection({ updateWork }) {
-  const [companyInput, updateCompany] = useState("");
-  const [startTimeInput, updateStartTime] = useState("");
-  const [endTimeInput, updateEndTime] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
-  const [description, updateDesc] = useState(""); // Restored missing state
+export function SkillsSection({ updateSkillsOutput }) {
   const [isFlipped, flipUpdate] = useState(true);
+  const [skillsInput, updateSkillsInput] = useState("");
   function handleSvgClick() {
     flipUpdate(!isFlipped);
   }
 
-  const inputArray = [
-    updateCompany,
-    updateStartTime,
-    updateEndTime,
-    updateDesc,
-  ];
-
-  const handleCheckboxChange = (event) => {
-    const checked = event.target.checked;
-    setIsChecked(checked); // Update the checkbox state
-    if (checked) {
-      updateEndTime("Currently Employed"); // Set endTime if checked
-    } else {
-      updateEndTime(""); // Clear endTime if unchecked
-    }
-  };
-
   // This handles the submit click and creates the resume HTML using props
   function handleSubmit() {
-    if (!companyInput || !startTimeInput || !description) {
+    if (!skillsInput) {
       alert("Please fill in all fields before submitting.");
       return;
     }
-    if (isChecked) {
-      setIsChecked(!isChecked);
-    }
-    updateWork((prevWork) => [
-      ...prevWork,
-      {
-        workplace: companyInput,
-        startTime: startTimeInput,
-        endTime: endTimeInput,
-        taskDesc: description,
-      },
-    ]);
-
-    // Reset fields after submission
-    inputArray.forEach((fn) => {
-      fn("");
-    });
+    updateSkillsOutput((prevSkills) => [...prevSkills, skillsInput]);
+    // Reset fields after submissions
+    updateSkillsInput("");
   }
   if (!isFlipped) {
     return (
-      <div className="workSection">
+      <div className="skillsSection">
         <span className="collapseBox">
-          <h2>Work Experience:</h2>
+          <h2>Skills and Abilities:</h2>
           <svg
             className="collapseButton"
-            id="workCollapse"
+            id="skillsCollapse"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -80,56 +44,26 @@ export function WorkSection({ updateWork }) {
             </g>
           </svg>
         </span>
-
-        <input
-          value={companyInput}
-          placeholder="Past/Current Company"
-          onChange={(e) => updateCompany(e.target.value)}
-        />
         <label style={{ textAlign: "center" }}>
-          Start Date:
+          Skills:
           <br></br>
           <input
-            type="date"
-            value={startTimeInput}
-            onChange={(e) => updateStartTime(e.target.value)}
+            type="text"
+            value={skillsInput}
+            onChange={(e) => updateSkillsInput(e.target.value)}
           />
         </label>
-        <label style={{ textAlign: "center" }}>
-          End Date:
-          <br></br>
-          <input
-            type="date"
-            value={endTimeInput}
-            onChange={(e) => updateEndTime(e.target.value)}
-          />
-        </label>
-        <span style={{ display: "flex", alignItems: "center" }}>
-          <label>
-            <input
-              type="checkbox"
-              checked={isChecked}
-              onChange={handleCheckboxChange}
-            />
-            Still Employed
-          </label>
-        </span>
-        <textarea
-          value={description}
-          placeholder="Description of experience/time spent at company..."
-          onChange={(e) => updateDesc(e.target.value)}
-        />
         <button onClick={handleSubmit}>Submit</button>
       </div>
     );
   } else {
     return (
-      <div className="workSection">
+      <div className="skillsSection">
         <span className="collapseBox">
-          <h2>Work Experience:</h2>
+          <h2>Skills and Abilities:</h2>
           <svg
             className={`collapseButton ${isFlipped ? "flipped" : ""}`}
-            id="workCollapse"
+            id="skillsCollapse"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { IoIosPhonePortrait, IoIosMail } from "react-icons/io";
-export const ResumeOutput = ({ resumeOutput, educationOutput, workOutput }) => {
+export const ResumeOutput = ({
+  resumeOutput,
+  educationOutput,
+  workOutput,
+  skillsOutput,
+}) => {
   const first = workOutput[0];
+  let skills = workOutput.skills;
   return (
     <div className="resumeWrapper">
       <div
@@ -114,16 +120,25 @@ export const ResumeOutput = ({ resumeOutput, educationOutput, workOutput }) => {
                 style={{
                   lineHeight: ".01rem",
                 }}
-              >{`${workExperience.workplace}, ${workExperience.startTime} - ${workExperience.endTime}`}</h3>
-              <h4 className="workDesc">{`${workExperience.taskDesc}`}</h4>
-              {workExperience.skills.forEach((skill) => {
-                return <h3>{skill}</h3>;
-              })}
+              >{`${
+                workExperience.workplace
+              }, ${workExperience.startTime.substring(0, 4)} - ${
+                workExperience.endTime.substring(0, 4) == "Curr"
+                  ? workExperience.endTime
+                  : workExperience.endTime.substring(0, 4)
+              }`}</h3>
+              <h4 className="workDesc">{workExperience.taskDesc}</h4>
             </div>
           ))
         ) : (
           <p>No work experience available.</p>
         )}
+      </div>
+      <div className="skillsResumeSection">
+        <h2>Skills and Abilities:</h2>
+        {skillsOutput.map((skill) => {
+          return <h4 className="skillLine">{skill}</h4>;
+        })}
       </div>
     </div>
   );
