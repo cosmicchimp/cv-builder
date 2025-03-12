@@ -55,9 +55,20 @@
     margin-left: auto !important;
     margin-right: 3vw !important;
   }
+  .buttonContainer {
+    width: 100vw !important;
+    position: relative !important;
+    right: 7vw !important;
+    justify-content: flex-end !important;
+    gap: 4vw !important;
+    height: 5vw !important;
+  }
+  .headerButton {
+    height: clamp(5vw, 8vw, 10vw);
+  }
 }
 #root {
-  max-width: 1280px;
+  max-width: 1400px;
 }
 :root {
   --mainColor: rgb(255, 204, 255);
@@ -91,6 +102,7 @@ html {
   justify-content: center;
   color: white;
   border-radius: 5px;
+  margin-bottom: 1.5vw;
   box-shadow: 4px 4px 10px rgb(30, 28, 28);
   grid-column: 1/1;
   grid-row: 2/2;
@@ -115,17 +127,22 @@ html {
   justify-content: space-between;
   color: white;
   align-items: center;
+  margin-left: 1vw;
+  user-select: none;
 }
 .buttonContainer {
   display: flex;
   flex-direction: row;
   margin-top: auto;
+  margin-left: auto;
   height: clamp(1vw, 3vw, 6vw);
   gap: 1.5vw;
+  grid-column: 2/3;
+  grid-row: 1/1;
 }
 .headerButton {
   transition: transform 1s;
-  max-height: 8vw;
+  cursor: pointer;
 }
 .headerButton:hover {
   transform: scale(1.2);
@@ -134,9 +151,13 @@ html {
   transform: scale(0.01);
 }
 #newResumeButton {
-  position: relative;
   top: 0.2vw;
-  max-height: 2.8vw;
+  position: relative;
+}
+#saveButton,
+#newResumeButton {
+  margin-top: auto;
+  height: clamp(1vw, 2vw, 3vw);
 }
 .resumeWrapper {
   background-color: white;
@@ -225,11 +246,13 @@ textarea {
   transition: transform 0.5s ease-in-out;
   margin-left: auto;
   margin-right: 0.25vw;
+  cursor: pointer;
 }
 
 .collapseButton.flipped {
   transform: rotate(180deg);
 }
+
 @keyframes flip {
   from {
     transform: rotate(180deg);

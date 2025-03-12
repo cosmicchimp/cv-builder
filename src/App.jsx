@@ -10,8 +10,11 @@ import "./App.css";
 function App() {
   useEffect(() => {
     document.title = "Resume Builder"; // Change this to your desired title
-  }, []);
-
+    alert("Use the '+' button to clear the demo resume");
+    // Display the alert
+  }, []); // Runs only when the component mounts
+  const [newResume, updateNewResume] = useState(false);
+  const [resumeDownload, updateResumeDownload] = useState(false);
   const [cvOutput, updateGeneralInfo] = useState({
     name: "John Doe",
     profession: "Developer",
@@ -41,7 +44,34 @@ function App() {
     "Frontend Development",
     "React Development",
   ]);
-
+  const fnArray = [
+    updateWork,
+    updateGeneralInfo,
+    updateEducation,
+    updateSkillsOutput,
+  ];
+  //function to detect and wipe the resume output
+  if (newResume) {
+    fnArray[0]([]); // Clear workOutput (set to an empty array)
+    fnArray[1]({}); // Clear cvOutput (set to an empty object)
+    fnArray[2]([]); // Clear educationOutput (set to an empty array)
+    fnArray[3]([]); // Clear skillsOutput (set to an empty array)
+    updateNewResume(false); // Reset newResume flag
+  }
+  if (resumeDownload) {
+    import("html2pdf.js").then((html2pdf) => {
+      // Assuming you want to trigger PDF creation here
+      const resumeContent = document.querySelector(".resumeWrapper");
+      const options = {
+        filename: "resume.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 4 },
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      };
+      html2pdf.default().from(resumeContent).set(options).save();
+    });
+    updateResumeDownload(false);
+  }
   return (
     <>
       <div className="appWrapper">
@@ -59,6 +89,8 @@ function App() {
           educationOutput={educationOutput}
           workOutput={workOutput}
           skillsOutput={skillsOutput}
+          updateNewResume={updateNewResume}
+          updateResumeDownload={updateResumeDownload}
         />
       </div>
     </>
